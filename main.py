@@ -1,12 +1,11 @@
 from scanner import scanner, active_ip_addresses
 from vulnerability import get_vulnerabilities
+from database_injection import save_all, conn
 import json
 
 router_ip = '192.168.0.1'
-network = '192.168.0.118/32' #'192.168.0.0/24' for hele netværket
-
+network = '192.168.0.0/24'
 result = scanner(host_list=active_ip_addresses(network), port_range='1-65535', router_ip=router_ip)
-
 
 
 def main_loop(results):
@@ -17,7 +16,8 @@ def main_loop(results):
             cve = get_vulnerabilities(service)
             vuln_list[ip][port] = cve
     return vuln_list
+vuln_results = main_loop(result)
 
-test = main_loop(result)
+save_all(conn, result, vuln_results)
 
-print(json.dumps(test, indent=4))
+print("Færdig! Data gemt i databasen.")
