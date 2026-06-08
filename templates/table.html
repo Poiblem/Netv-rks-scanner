@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f5f5f5; }
+        h1 { color: #2E4057; }
+        a { color: #2E4057; }
+        table { border-collapse: collapse; width: 100%; background: white; }
+        th { background: #2E4057; color: white; padding: 10px; text-align: left; }
+        td { padding: 8px 10px; border-bottom: 1px solid #ddd; max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        tr:hover { background: #f0f0f0; }
+        .back { margin-bottom: 20px; display: inline-block; }
+        .count { color: #666; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <a href="/" class="back">← Tilbage</a>
+    <h1>{{ title }}</h1>
+    <p class="count">{{ rows|length }} rækker</p>
+    
+    {% if rows %}
+    <table>
+        <thead>
+            <tr>
+                {% for col in columns %}
+                <th>{{ col }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+            <tr>
+                {% for cell in row %}
+                <td title="{{ cell }}">{{ cell }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Ingen data fundet.</p>
+    {% endif %}
+</body>
+</html>

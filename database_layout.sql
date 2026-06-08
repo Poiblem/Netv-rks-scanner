@@ -2,12 +2,9 @@
 
 --- Database Layout for Sårbarhedsdatabasen=
 ---=========================================    
-
 --- on Desktop to run: & "C:\Program Files\PostgreSQL\16\bin\psql.exe" -U server_admin -d server_cve -h 127.0.0.1 -f database_layout.sql
 -- & "C:\Program Files\PostgreSQL\16\bin\psql.exe" -U server_admin -d server_cve -h 127.0.0.1 -c 
-
 -- Clear database: & "C:\Program Files\PostgreSQL\16\bin\psql.exe" -U server_admin -d server_cve -h 127.0.0.1 -c "DROP TABLE IF EXISTS incidents, vulnerabilities, services, devices, error_log CASCADE;"
-
 CREATE TABLE IF NOT EXISTS devices (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,

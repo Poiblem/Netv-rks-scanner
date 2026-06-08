@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Netværks Sårbarhedsscanner</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f5f5f5; }
+        h1 { color: #2E4057; }
+        .status { padding: 15px; border-radius: 5px; margin: 20px 0; }
+        .running { background: #fff3cd; border: 1px solid #ffc107; }
+        .idle { background: #d4edda; border: 1px solid #28a745; }
+        .scan-btn { background: #2E4057; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        .scan-btn:hover { background: #1a2a3a; }
+        .scan-btn:disabled { background: #999; cursor: not-allowed; }
+        nav { margin: 20px 0; }
+        nav a { margin-right: 15px; color: #2E4057; text-decoration: none; font-weight: bold; }
+        nav a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>Netværks Sårbarhedsscanner</h1>
+    
+    <div class="status {{ 'running' if status.running else 'idle' }}">
+        {{ status.message }}
+    </div>
+    
+    <a href="/scan">
+        <button class="scan-btn" {{ 'disabled' if status.running }}>
+            {{ 'Scanner kører...' if status.running else 'Start Scanning' }}
+        </button>
+    </a>
+    
+    <h2>Database</h2>
+    <nav>
+        <a href="/devices">Devices</a>
+        <a href="/services">Services</a>
+        <a href="/vulnerabilities">Vulnerabilities</a>
+        <a href="/incidents">Incidents</a>
+        <a href="/errors">Error Log</a>
+    </nav>
+</body>
+</html>

@@ -2,7 +2,7 @@
 setlocal EnableDelayedExpansion
 
 set DB_USER=server_admin
-set DB_PASSWORD=123
+set DB_PASSWORD=123         
 set DB_NAME=server_cve
 
 set PG_VERSION=16

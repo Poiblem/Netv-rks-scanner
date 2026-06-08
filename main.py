@@ -5,7 +5,7 @@ import json
 
 router_ip = '192.168.0.1'
 network = '192.168.0.0/24'
-result = scanner(host_list=active_ip_addresses(network), port_range='1-65535', router_ip=router_ip)
+result = scanner(host_list=active_ip_addresses(network), port_range='1-20000', router_ip=router_ip)
 
 
 def main_loop(results):
@@ -19,5 +19,5 @@ def main_loop(results):
 vuln_results = main_loop(result)
 
 save_all(conn, result, vuln_results)
-
+json.dump(vuln_results, open('vuln.json', 'w'), indent=4)
 print("Færdig! Data gemt i databasen.")

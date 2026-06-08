@@ -3,7 +3,7 @@ import json
 from database_injection import save_error, conn
 
 
-network = '192.168.0.118/32'
+network = '192.168.0.183/32'
 port_range = '1-65535'
 nm = nmap.PortScanner(nmap_search_path=[r'C:\Program Files (x86)\Nmap\nmap.exe'])
 router_ip = '192.168.0.0'
